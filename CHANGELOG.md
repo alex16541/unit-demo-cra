@@ -1,6 +1,7 @@
 # Changelog (`v7.5`)
 
 ##Changes
+- docs: Обновить CHANGELOG
 - ci: изменить переменные
 - docs: Обновить CHANGELOG
 - ci: изменить паттерн геренации changelog
