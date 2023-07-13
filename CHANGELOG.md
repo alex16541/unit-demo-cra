@@ -3,6 +3,7 @@
 ##Changes
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
+- docs: Обновить CHANGELOG
 - ci: изменить переменные
 - docs: Обновить CHANGELOG
 - ci: изменить паттерн геренации changelog
