@@ -27,9 +27,10 @@ jobs:
 
             - name: Create new release branch
               run: |
-                  git checkout -b v$RELEASE_VERSION
-                  git push origin v$RELEASE_VERSION
+                  git checkout -b ${{github.ref_name}}
+                  git push origin ${{github.ref_name}}
 
             - name: Tests
               run: |
+                  npm install
                   npm run ci:test
