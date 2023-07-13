@@ -33,7 +33,7 @@ jobs:
                   export VERSION=$(git tag | tail -1)
                   export PREVIOUS_VERSION=$(git tag | tail -2 | head -1)
                   export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
-                  printf "# Changelog (\`$VERSION\`)\n\n##Changes\n$CHANGES" > CHAGNELOG.md
+                  printf "# Changelog (\`$VERSION\`)\n\n##Changes\n$CHANGES" > CHANGELOG.md
 
             - name: Save chagenlog
               run: |
