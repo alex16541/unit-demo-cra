@@ -31,8 +31,9 @@
         "eject": "react-scripts eject",
         "test": "react-scripts test",
         "e2e": "playwright test --project=chromium && playwright show-report",
-        "test-ci": "CI=true npm test -- --reporters=\"default\" --reporters=\"jest-html-reporter\" --reporters=\"jest-teamcity\"",
-        "husky:commitlint": "npx commitlint --from HEAD~1 --to HEAD --verbose -g './config/git/commitlint.cjs'"
+        "ci:test": "CI=true npm test -- --reporters=\"default\" --reporters=\"jest-html-reporter\" --reporters=\"jest-teamcity\"",
+        "husky:commitlint": "npx commitlint --from HEAD~1 --to HEAD --verbose -g './config/git/commitlint.cjs'",
+        "ci:release": "вызов sh скрипта. типа"
     },
     "eslintConfig": {
         "extends": [
