@@ -22,10 +22,13 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
+            - name: Set env
+              run: echo "RELEASE_VERSION=${GITHUB_REF#REFS/*/}" >> $GITHUB_ENV
+
             - name: Create new release branch
               run: |
-                  git checkout -b v1
-                  git push origin :v1
+                  git checkout -b v$RELEASE_VERSION
+                  git push origin v$RELEASE_VERSION
 
             - name: Tests
               run: |
