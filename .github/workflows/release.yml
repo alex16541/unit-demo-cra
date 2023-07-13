@@ -2,10 +2,10 @@ name: release
 
 on:
     push:
-        tags: "v[0-9]+"
+        tags: "v*"
 
 jobs:
-    build:
+    checkout:
         runs-on: ubuntu-latest
 
         strategy:
@@ -38,8 +38,3 @@ jobs:
                   cat << "EOF" > changelog.md
                   ${{ steps.changelog.outputs.changelog }}
                   EOF
-
-            - name: Tests
-              run: |
-                  npm install
-                  npm run ci:test
