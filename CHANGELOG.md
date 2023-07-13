@@ -1,4 +1,3 @@
-# Changelog (`v7.5`)
+# Changelog (`v7.4`)
 
 ##Changes
-- ci: перенести создание chengelog в экшн на событие push в ветку релиза
