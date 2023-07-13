@@ -26,11 +26,10 @@ jobs:
 
             - name: Get the changelog
               run: |
-                  export VERSION=$(git tag --sort=-committerdate | head -1)
+                  export VERSION=$(git tag |grep v | tail -2 | head -1)
                   export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
                   export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
                   printf "# Changelog (\`$VERSION\`)\n\n##Changes\n$CHANGES" > CHANGELOG.md
-                  cat CHANGELOG.md
 
             - name: Save chagenlog
               run: |
