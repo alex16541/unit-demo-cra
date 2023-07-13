@@ -32,12 +32,6 @@ jobs:
                   git checkout -b release/${{github.ref_name}}
                   git push origin release/${{github.ref_name}}
 
-            - name: Get a changelog between two references
-              id: changelog
-              uses: metcalfc/changelog-generator@v4.0.0
-              with:
-                  myToken: ${{ secrets.GH_ACCESS_TOKEN }}
-
             - name: Get the changelog
               run: |
                   export VERSION=$(git tag | tail -1)
