@@ -26,7 +26,7 @@ jobs:
             - name: Create new release branch
               run: |
                   git checkout -b release/${{github.ref_name}}
-                  git push origin release/${{github.ref_name}}
+                  git push -u origin release/${{github.ref_name}}
 
             - name: Get the changelog
               run: |
