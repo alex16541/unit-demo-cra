@@ -26,15 +26,15 @@ jobs:
 
             - name: Get the changelog
               run: |
-                  export VERSION=$(git tag --sort=-committerdate | head -1)
-                  export PREVIOUS_VERSION=$(git tag --sort=-committerdate | head -2 | awk '{split($0, tags, "\n")} END {print tags[1]}')
-                  export CHANGES=$(git log --pretty="- %s" $VERSION...$PREVIOUS_VERSION)
-                  printf "# Changelog (\`$VERSION\`)\n\n##Changes\n$CHANGES" > CHANGELOG.md
+                  export VERSION=$(git tag |grep v | tail -1)
+                  export PREVIOUS_VERSION=$(git tag |grep v | tail -2 | head -1)
+                  export CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION..)
+                  printf "# Changelog (\`$VERSION\`)\n\n## Changes\n$CHANGES" > CHANGELOG.md
 
             - name: Save chagenlog
               run: |
                   git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
                   git config --local user.name "github-actions[bot]"
-                  git add CHANGELOG.md
+                  git add .
                   git commit -m 'docs: Обновить CHANGELOG'
                   git push
