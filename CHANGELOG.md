@@ -1,4 +1,5 @@
 # Changelog (`v9.2`)
 
 ## Changes
+- docs: Обновить CHANGELOG
 - ci: испарвить команды
