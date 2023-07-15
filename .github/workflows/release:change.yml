@@ -45,12 +45,12 @@ jobs:
 
             - name: Find issue
               run: |
-                ISSUE_NUMBER=$(node config/githubActions/getIssueNumber.js ${{ github.repository }} ${{ secrets.GH_ACCESS_TOKEN }} $VERSION)
+                export ISSUE_NUMBER=$(node config/githubActions/getIssueNumber.js ${{ github.repository }} ${{ secrets.GH_ACCESS_TOKEN }} $VERSION)
 
             - name: Run tests
               id: tests
               run: |
-                npm ci:test
+                npm run ci:test
             
             - name: Create failure comment
               if: ${{ failure() && steps.tests.conclusion == 'failure'}}
@@ -60,7 +60,7 @@ jobs:
                   -H "Accept: application/vnd.github+json" \
                   -H "Authorization: Bearer ${{ secrets.GH_ACCESS_TOKEN }}"\
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  https://api.github.com/repos/${{github.repository}}/issues/$ISSUE_NUMBER \
+                  https://api.github.com/repos/${{github.repository}}/issues/${ISSUE_NUMBER} \
                   -d '{"body":"Тесты провалены ([${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))"}'
 
             - name: Create success comment
