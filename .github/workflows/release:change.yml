@@ -37,23 +37,20 @@ jobs:
                   CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION..)
 
                   printf "# Changelog (\`$VERSION\`)\n\n## Changes\n$CHANGES" > CHANGELOG.md
+                  
+            - name: Save chagenlog
+              run: |
+                git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                git config --local user.name "github-actions[bot]"
+                git add .
+                git commit -m 'docs: Обновить CHANGELOG'
+                git push
 
             - name: Install dependencies
               run: |
                 npm install
-                npx playwright install --with-deps chromium     
+                npx playwright install --with-deps chromium      
                 
-            - name: Build
-              run: npm run ci:build
-
-            - name: Save chagenlog and build
-              run: |
-                  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                  git config --local user.name "github-actions[bot]"
-                  git add .
-                  git commit -m 'docs: Обновить CHANGELOG'
-                  git push
-
             - name: Find issue
               run: |
                echo ISSUE_NUMBER=$( node config/githubActions/getIssueNumber.js ${{ github.repository }} ${{ secrets.GH_ACCESS_TOKEN }} ${{ env.VERSION }}) >> "$GITHUB_ENV"
@@ -86,11 +83,9 @@ jobs:
                   -d '{"body":"Тесты пройдены ([${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))"}'
             
             - name: Deploy
-              uses: peaceiris/actions-gh-pages@v3
+              uses: EdricChan03/action-build-deploy-ghpages@v3
               with:
-                github_token: ${{ secrets.GH_ACCESS_TOKEN }}
-                publish_branch: release/${{ env.VERSION }}
-                publish_dir: ./dist
+                github_token: ${{ secrets.GITHUB_TOKEN }}
             
             - name: Create publish comment
               run: |
