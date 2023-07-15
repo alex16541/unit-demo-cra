@@ -1,6 +1,7 @@
-# Changelog (`v9.3`)
+# Changelog (`v9.5`)
 
 ## Changes
+- docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
