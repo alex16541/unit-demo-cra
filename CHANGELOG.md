@@ -166,4 +166,5 @@
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
+- docs: Обновить CHANGELOG
 - ci: переместить шагу установки модулей до вызова скриптов
