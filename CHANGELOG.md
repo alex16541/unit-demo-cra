@@ -1,4 +1,4 @@
-# Changelog (`v9.1`)
+# Changelog (`v9.2`)
 
 ## Changes
 - docs: Обновить CHANGELOG
@@ -250,4 +250,4 @@
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
-- ci: переместить шагу установки модулей до вызова скриптов
+- docs: Обновить CHANGELOG
