@@ -84,6 +84,7 @@ jobs:
             
             - name: Deploy
               run: |
+                git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
                 npm run ci:predeploy
                 npm run ci:deploy
             
