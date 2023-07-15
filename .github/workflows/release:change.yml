@@ -34,7 +34,7 @@ jobs:
                   echo PREVIOUS_VERSION=$PREVIOUS_VERSION >> "$GITHUB_ENV"
 
                   CHANGES=$(git log --pretty="- %s" $PREVIOUS_VERSION..)
-                  
+
                   printf "# Changelog (\`$VERSION\`)\n\n## Changes\n$CHANGES" > CHANGELOG.md
 
             - name: Save chagenlog
@@ -56,7 +56,8 @@ jobs:
             - name: Run tests
               id: tests
               run: |
-                npm run ci:test
+                npm run ci:test:unit
+                npm run ci:test:e2e
             
             - name: Create failure comment
               if: ${{ failure() && steps.tests.conclusion == 'failure'}}
@@ -66,7 +67,7 @@ jobs:
                   -H "Accept: application/vnd.github+json" \
                   -H "Authorization: Bearer ${{ secrets.GH_ACCESS_TOKEN }}"\
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  https://api.github.com/repos/${{github.repository}}/issues/${{env.ISSUE_NUMBER}} \
+                  https://api.github.com/repos/${{github.repository}}/issues/${{env.ISSUE_NUMBER}}/comments \
                   -d '{"body":"Тесты провалены ([${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))"}'
 
             - name: Create success comment
@@ -76,7 +77,7 @@ jobs:
                   -H "Accept: application/vnd.github+json" \
                   -H "Authorization: Bearer ${{ secrets.GH_ACCESS_TOKEN }}"\
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  https://api.github.com/repos/${{ github.repository }}/issues/${{ env.ISSUE_NUMBER }} \
+                  https://api.github.com/repos/${{ github.repository }}/issues/${{ env.ISSUE_NUMBER }}/comments \
                   -d '{"body":"Тесты пройдены ([${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))"}'
             
             - name: Close issue
@@ -87,4 +88,4 @@ jobs:
                   -H "Authorization: Bearer ${{ secrets.GH_ACCESS_TOKEN }}"\
                   -H "X-GitHub-Api-Version: 2022-11-28" \
                   https://api.github.com/repos/${{ github.repository }}/issues/${{ env.ISSUE_NUMBER }}/lock \
-                  -d '{"lock_reason":"Released"}'
+                  -d '{"lock_reason":"resolved"}'
