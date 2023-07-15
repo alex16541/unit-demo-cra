@@ -32,7 +32,7 @@
         "test": "react-scripts test",
         "e2e": "playwright test --project=chromium",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d build",
+        "ci:deploy": "gh-pages -d build -u 'github-actions[bot] 41898282+github-actions[bot]@users.noreply.github.com",
         "ci:test:unit": "CI=true npm test -- --reporters=\"default\" --reporters=\"jest-html-reporter\" --reporters=\"jest-teamcity\"",
         "ci:test:e2e": "CI=true npm run e2e",
         "ci:build": "BUILD_PATH='./dist' react-scripts build",
