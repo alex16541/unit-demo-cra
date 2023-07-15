@@ -39,18 +39,21 @@ jobs:
                   git commit -m 'docs: Обновить CHANGELOG'
                   git push
 
-            - name: Find issue
+            - name: Install modules
+              run: |
+                npm install      
 
+            - name: Find issue
               run: |
                 ISSUE_NUMBER=$(node config/githubActions/getIssueNumber.js ${{ github.repository }} ${{ secrets.GH_ACCESS_TOKEN }} $VERSION)
 
             - name: Run tests
+              id: tests
               run: |
-                npm install
                 npm ci:test
             
             - name: Create failure comment
-              if: ${{ failure() }}
+              if: ${{ failure() && steps.tests.conclusion == 'failure'}}
               run: | 
                 curl -L \
                   -X POST \
@@ -61,7 +64,6 @@ jobs:
                   -d '{"body":"Тесты провалены ([${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))"}'
 
             - name: Create success comment
-              if: ${{ !failure() }}
               run: |
                 curl -L \
                   -X POST \
