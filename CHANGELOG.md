@@ -243,3 +243,4 @@
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
+- docs: Обновить CHANGELOG
