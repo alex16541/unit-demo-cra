@@ -1,4 +1,4 @@
-# Changelog (`v9.2`)
+# Changelog (`v9.3`)
 
 ## Changes
 - docs: Обновить CHANGELOG
@@ -122,4 +122,4 @@
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
-- ci: испарвить команды
+- docs: Обновить CHANGELOG
