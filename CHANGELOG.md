@@ -87,4 +87,5 @@
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
+- docs: Обновить CHANGELOG
 - ci: настрить работу с issue и тестами
