@@ -68,6 +68,7 @@
     },
     "devDependencies": {
         "@commitlint/cli": "^17.6.6",
+        "@octokit/request": "^8.1.0",
         "@playwright/test": "^1.28.0",
         "@types/react-helmet": "^6.1.5",
         "cz-customizable": "^7.0.0",
