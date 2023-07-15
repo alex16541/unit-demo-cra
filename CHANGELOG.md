@@ -282,4 +282,5 @@
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
 - docs: Обновить CHANGELOG
+- docs: Обновить CHANGELOG
 - ci: настроить ci
