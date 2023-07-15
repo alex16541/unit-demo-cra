@@ -1,7 +1,7 @@
 {
     "name": "unit-demo-cra",
     "version": "8.2.0",
-    "homepage": "./unit-demo-cra/dist",
+    "homepage": "http://alex16541.github.io/unit-demo-cra",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
@@ -31,6 +31,8 @@
         "eject": "react-scripts eject",
         "test": "react-scripts test",
         "e2e": "playwright test --project=chromium",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "ci:test:unit": "CI=true npm test -- --reporters=\"default\" --reporters=\"jest-html-reporter\" --reporters=\"jest-teamcity\"",
         "ci:test:e2e": "CI=true npm run e2e",
         "ci:build": "BUILD_PATH='./dist' react-scripts build",

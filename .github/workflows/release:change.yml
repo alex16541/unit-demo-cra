@@ -42,11 +42,8 @@ jobs:
               run: |
                 npm install
                 npx playwright install --with-deps chromium     
-                
-            - name: Build
-              run: npm run ci:build
 
-            - name: Save chagenlog and build
+            - name: Save chagenlog
               run: |
                   git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
                   git config --local user.name "github-actions[bot]"
@@ -86,11 +83,8 @@ jobs:
                   -d '{"body":"Тесты пройдены ([${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}))"}'
             
             - name: Deploy
-              uses: peaceiris/actions-gh-pages@v3
-              with:
-                github_token: ${{ secrets.GH_ACCESS_TOKEN }}
-                publish_branch: release/${{ env.VERSION }}
-                publish_dir: ./dist
+              run: |
+                npm run deploy
             
             - name: Create publish comment
               run: |
