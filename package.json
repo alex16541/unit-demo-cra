@@ -1,7 +1,7 @@
 {
     "name": "unit-demo-cra",
     "version": "8.2.0",
-    "homepage": "http://alex16541.github.io/gh-pages",
+    "homepage": "http://alex16541.github.io/unit-demo-cra",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
